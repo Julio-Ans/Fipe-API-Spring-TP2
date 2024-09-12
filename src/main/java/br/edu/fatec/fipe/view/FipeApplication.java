@@ -18,42 +18,43 @@ public class FipeApplication  implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-		while (true) {
+        int i = 1;
+        while (i == 1) {
 
-			ConverteDado conversor = new ConverteDado();
-			String json = ConsomeApi.printarMarca();
-			System.out.println(json);
+            ConverteDado conversor = new ConverteDado();
+            String json = ConsomeApi.printarMarca();
+            System.out.println(json);
 
-			System.out.println("Digite o código da marca do Carro:");
-			String marca = scan.nextLine();
+            System.out.println("Digite o código da marca do Carro:");
+            String marca = scan.nextLine();
 
-			String json1 = ConsomeApi.printarModelo(marca);
-			System.out.println(json1);
+            String json1 = ConsomeApi.printarModelo(marca);
+            System.out.println(json1);
 
-			System.out.println("Digite o código do modelo do Carro:");
-			String modelo = scan.nextLine();
+            System.out.println("Digite o código do modelo do Carro:");
+            String modelo = scan.nextLine();
 
-			String json2 = ConsomeApi.printarAno(marca, modelo);
-			System.out.println(json2);
-
-
-			System.out.println("Digite o ano do Carro:");
-			String ano = scan.nextLine();
-
-			String json3 = ConsomeApi.obterDados(marca, modelo, ano);
-			Fipe jsonTratado = conversor.obterDado(json3, Fipe.class);
-			System.out.println(jsonTratado);
-
-			System.out.println("\n\nDigite 1 para fazer uma nova consulta e 2 para fechar o programa:");
-			int i = scan.nextInt();
-			if(i!=1){
-				break;
-			}
+            String json2 = ConsomeApi.printarAno(marca, modelo);
+            System.out.println(json2);
 
 
+            System.out.println("Digite o ano do Carro:");
+            String ano = scan.nextLine();
 
-		}
-	}
+            String json3 = ConsomeApi.obterDados(marca, modelo, ano);
+            Fipe jsonTratado = conversor.obterDado(json3, Fipe.class);
+            System.out.println(jsonTratado);
+
+            System.out.println("\n\nDigite 1 para fazer uma nova consulta e 2 para fechar o programa:");
+            i = scan.nextInt();
+			scan.nextLine();
+            if (i != 1) {
+                break;
+            }
+
+
+        }
+    }
 }
